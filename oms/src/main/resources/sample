@@ -1,0 +1,15 @@
+http://localhost:8082/h2-console/login.do?jsessionid=26b0d7365a5386a49fb79c8a354f4d8c
+
+{"orderId":1,"accountId":1,"userName":"vishal","inventoryId":20001,"inventoryName":"jeans"}
+
+
+http://localhost:8082/order
+
+
+create table place_order (order_id integer not null, account_id integer not null,user_name varchar(255), inventory_name varchar(255), primary key (order_id));
+
+
+
+docker image build --file=omsDockerfile --tag=oms:1.0 .
+docker container run -d -p=8083:8083 oms:1.0 --name=oms 
+

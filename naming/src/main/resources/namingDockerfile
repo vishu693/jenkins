@@ -1,0 +1,7 @@
+FROM openjdk:17
+LABEL maintainer="vishu naming"
+LABEL description="naming"
+COPY naming-1.0.jar /opt/vishal/
+WORKDIR /opt/vishal/
+EXPOSE 8761
+ENTRYPOINT ["java", "-jar", "naming-1.0.jar"]
