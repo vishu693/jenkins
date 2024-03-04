@@ -1,0 +1,7 @@
+FROM openjdk:17
+LABEL maintainer="vishu myaccount"
+LABEL description="myaccount"
+COPY myaccount-1.0.jar /opt/vishal/
+WORKDIR /opt/vishal/
+EXPOSE 8080
+ENTRYPOINT ["java", "-jar", "myaccount-1.0.jar"]

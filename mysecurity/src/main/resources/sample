@@ -1,0 +1,27 @@
+http://localhost:8080/auth/addNewUser
+
+{
+		"name": "v",
+		"password": "vi",
+        "email":"vishal@cavisson.com",
+        "roles":"ROLE_USER"
+		}
+		
+		http://localhost:8080/auth/generateToken
+		
+		{
+		"username": "v",
+		"password": "vi"
+        
+		}
+		
+		
+		http://localhost:8080/auth/welcome
+		
+		http://localhost:8080/auth/admin/adminProfile
+		
+		http://localhost:8080/auth/user/userProfile
+		
+		user: eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c2VyIiwiaWF0IjoxNzA5MTkwNzAwLCJleHAiOjE3MDkxOTEwMDB9.2mU_-nxElLM0gLAEz6LyT7TaChNp0FQUzvvaBPu92HU
+		admin 
+		eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImlhdCI6MTcwOTE5MDY4NCwiZXhwIjoxNzA5MTkwOTg0fQ.BPQxWVJzps4sb_9u1jJh5_A4OQXrY3xY6-xirK8vxE8
