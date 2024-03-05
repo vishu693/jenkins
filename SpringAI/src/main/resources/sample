@@ -1,0 +1,70 @@
+https://www.youtube.com/watch?v=RKaxATb2kz8
+
+http://localhost:8082/h2-console/login.do?jsessionid=26b0d7365a5386a49fb79c8a354f4d8c
+
+{"orderId":1,"accountId":1,"userName":"vishal","inventoryId":20001,"inventoryName":"jeans"}
+
+
+http://localhost:8082/order
+docker image build --file=configDockerfile --tag=config:1.0 .
+docker container run  -d -p=8888:8888 config:1.0 --name=config
+
+docker container run  -d -p=8888:8888 lavyaarora2014/vishu:config-1.0 --name=config
+
+
+FROM openjdk:17
+LABEL maintainer="vishu config"
+LABEL description="config"
+COPY config-1.0.jar /opt/vishal/
+WORKDIR /opt/vishal/
+EXPOSE 8888
+ENTRYPOINT ["java", "-jar", "config-1.0.jar"]
+
+
+
+pipeline
+{
+    agent any
+    tools
+    {
+        maven "maventool"
+    }
+    stages
+    {
+        stage("Build maven")
+        {
+            steps
+            {
+                checkout scmGit(branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[credentialsId: 'bdff62b5-92c7-4159-8dbe-85f76f1607e0', url: 'https://github.com/vishu693/jenkins/']])
+           bat 'mvn -f config/pom.xml clean install'
+           
+            }
+        }
+         stage("Build Docker Image")
+        {
+            steps
+            {
+                script
+                {
+                    bat 'docker build -f config/Dockerfile -t config:1.0 .'
+                }
+             
+           
+            }
+        }
+         stage("Docker image Push")
+        {
+            steps
+            {
+                script
+                {
+                    bat 'docker login -u lavyaarora2014 -p Bhatti12#'
+                    
+                    bat 'docker push lavyaarora2014/vishu:config:1.0'
+                }
+             
+           
+            }
+        }
+    }
+}
