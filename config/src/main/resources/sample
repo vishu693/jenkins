@@ -58,7 +58,7 @@ pipeline
             {
                 script
                 {
-                    bat 'docker login -u lavyaarora2014 -p Bhatti12#'
+                    bat 'docker login -u  -p '
                     
                     bat 'docker push lavyaarora2014/vishu:config:1.0'
                 }
